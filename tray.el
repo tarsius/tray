@@ -38,6 +38,8 @@
 (require 'transient)
 
 (eval-when-compile
+  (require 'epa)
+  (require 'epa-mail)
   )
 
 (defvar tray-add-suggested-bindings nil
@@ -49,10 +51,53 @@ you have to call the function by the same name instead.")
   "Add all suggested key bindings.
 If you would rather cherry-pick some bindings, then
 start by looking at the definition of this function."
+  (define-key global-map            (kbd "C-c C-e") 'tray-epa-dispatch)
+  (define-key epa-key-list-mode-map (kbd "C-c C-e") 'tray-epa-key-list-dispatch)
+  (define-key epa-mail-mode-map     (kbd "C-c C-e") 'tray-epa-mail-dispatch)
   )
 
 (when tray-add-suggested-bindings
   (tray-add-suggested-bindings))
+
+;;; epa, epa-mail
+
+;;;###autoload (autoload 'tray-epa-dispatch "tray" nil t)
+(transient-define-prefix tray-epa-dispatch ()
+  "Select and invoke an EasyPG command from a list of available commands."
+  [[("l p" "list public keys"   epa-list-keys)
+    ("l s" "list secret keys"   epa-list-secret-keys)
+    ("i p" "insert public keys" epa-insert-keys)]])
+
+;;;###autoload (autoload 'tray-epa-mail-dispatch "tray" nil t)
+(transient-define-prefix tray-epa-mail-dispatch ()
+  "Select and invoke an EasyPG command from a list of available commands."
+  [[("e"  "encrypt"     epa-mail-encrypt)
+    ("d"  "decrypt"     epa-mail-decrypt)]
+   [("s"  "sign"        epa-mail-sign)
+    ("v"  "verify"      epa-mail-verify)]
+   [("i"  "import keys" epa-mail-import-keys)
+    ("o"  "insert keys" epa-insert-keys)]])
+
+;;;###autoload (autoload 'tray-epa-key-list-dispatch "tray" nil t)
+(transient-define-prefix tray-epa-key-list-dispatch ()
+  "Select and invoke an EasyPG command from a list of available commands."
+  :transient-suffix     'transient--do-call
+  :transient-non-suffix 'transient--do-stay
+  [[("m" "mark"      epa-mark-key)
+    ("u" "unmark"    epa-unmark-key)]
+   [("e" "encrypt"   epa-encrypt-file)
+    ("d" "decrypt"   epa-decrypt-file)]
+   [("s" "sign"      epa-sign-file)
+    ("v" "verify"    epa-verify-file)]
+   [("i" "import"    epa-import-keys)
+    ("o" "export"    epa-export-keys)
+    ("r" "delete"    epa-delete-keys)]
+   [("g  " "refresh"          revert-buffer)
+    ("l p" "list public keys" epa-list-keys)
+    ("l s" "list secret keys" epa-list-secret-keys)]
+   [("n" "move up"   next-line)
+    ("p" "move down" previous-line)
+    ("q" "exit"      epa-exit-buffer :transient nil)]])
 
 ;;; _
 (provide 'tray)
