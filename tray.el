@@ -40,6 +40,7 @@
 (eval-when-compile
   (require 'epa)
   (require 'epa-mail)
+  (require 'mml)
   )
 
 (defvar tray-add-suggested-bindings nil
@@ -54,6 +55,7 @@ start by looking at the definition of this function."
   (define-key global-map            (kbd "C-c C-e") 'tray-epa-dispatch)
   (define-key epa-key-list-mode-map (kbd "C-c C-e") 'tray-epa-key-list-dispatch)
   (define-key epa-mail-mode-map     (kbd "C-c C-e") 'tray-epa-mail-dispatch)
+  (define-key mml-mode-map (kbd "C-c C-m") 'tray-mml)
   )
 
 (when tray-add-suggested-bindings
@@ -98,6 +100,48 @@ start by looking at the definition of this function."
    [("n" "move up"   next-line)
     ("p" "move down" previous-line)
     ("q" "exit"      epa-exit-buffer :transient nil)]])
+
+;;; mml
+
+;;;###autoload (autoload 'tray-mml "tray" nil t)
+(transient-define-prefix tray-mml ()
+  "Transient menu for MML documents."
+  [["Attach"
+    ("f" "file"      mml-attach-file)
+    ("b" "buffer"    mml-attach-buffer)
+    ("e" "external"  mml-attach-external)]
+   ["Insert"
+    ("m" "multipart" mml-insert-multipart)
+    ("p" "part"      mml-insert-part)]]
+  [["Sign"
+    ("s p" "pgpmime" mml-secure-message-sign-pgpmime)
+    ("s o" "pgp"     mml-secure-message-sign-pgp)
+    ("s s" "smime"   mml-secure-message-sign-smime)]
+   ["Sign part"
+    ("S p" "pgpmime" mml-secure-sign-pgpmime)
+    ("S o" "pgp"     mml-secure-sign-pgp)
+    ("S s" "smime"   mml-secure-sign-smime)]
+   ["Encrypt"
+    ("c p" "pgpmime" mml-secure-message-encrypt-pgpmime)
+    ("c o" "pgp"     mml-secure-message-encrypt-pgp)
+    ("c s" "smime"   mml-secure-message-encrypt-smime)]
+   ["Encrypt part"
+    ("C p" "pgpmime" mml-secure-encrypt-pgpmime)
+    ("C o" "pgp"     mml-secure-encrypt-pgp)
+    ("C s" "smime"   mml-secure-encrypt-smime)]]
+  [["Misc"
+    ;;("n  " "narrow"       mml-narrow-to-part)
+    ("C-n" "unsecure"     mml-unsecure-message)
+    ("q  " "quote region" mml-quote-region)
+    ("v  " "validate"     mml-validate)
+    ("P  " "preview"      mml-preview)]
+   ["Dwim"
+    ("C-s" "sign"           mml-secure-message-sign)
+    ("C-c" "encrypt"        mml-secure-message-encrypt)
+    ("C-e" "sign & encrypt" mml-secure-message-sign-encrypt)]
+   ["Dwim part"
+    ("C-p C-s" "sign"       mml-secure-sign)
+    ("C-p C-c" "encrypt"    mml-secure-encrypt)]])
 
 ;;; _
 (provide 'tray)
