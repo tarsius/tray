@@ -1,6 +1,6 @@
 ;;; tray.el --- Various transient menus            -*- lexical-binding: t -*-
 
-;; Copyright (C) 2021  Jonas Bernoulli
+;; Copyright (C) 2021-2022  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Homepage: https://git.sr.ht/~tarsius/tray
@@ -52,10 +52,10 @@ you have to call the function by the same name instead.")
   "Add all suggested key bindings.
 If you would rather cherry-pick some bindings, then
 start by looking at the definition of this function."
-  (define-key global-map            (kbd "C-c C-e") 'tray-epa-dispatch)
-  (define-key epa-key-list-mode-map (kbd "C-c C-e") 'tray-epa-key-list-dispatch)
-  (define-key epa-mail-mode-map     (kbd "C-c C-e") 'tray-epa-mail-dispatch)
-  (define-key mml-mode-map (kbd "C-c C-m") 'tray-mml)
+  (define-key global-map            (kbd "C-c C-e") #'tray-epa-dispatch)
+  (define-key epa-key-list-mode-map (kbd "C-c C-e") #'tray-epa-key-list-dispatch)
+  (define-key epa-mail-mode-map     (kbd "C-c C-e") #'tray-epa-mail-dispatch)
+  (define-key mml-mode-map          (kbd "C-c C-m") #'tray-mml)
   )
 
 (when tray-add-suggested-bindings
@@ -83,8 +83,8 @@ start by looking at the definition of this function."
 ;;;###autoload (autoload 'tray-epa-key-list-dispatch "tray" nil t)
 (transient-define-prefix tray-epa-key-list-dispatch ()
   "Select and invoke an EasyPG command from a list of available commands."
-  :transient-suffix     'transient--do-call
-  :transient-non-suffix 'transient--do-stay
+  :transient-suffix     #'transient--do-call
+  :transient-non-suffix #'transient--do-stay
   [[("m" "mark"      epa-mark-key)
     ("u" "unmark"    epa-unmark-key)]
    [("e" "encrypt"   epa-encrypt-file)
