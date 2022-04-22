@@ -6,7 +6,7 @@
 ;; Homepage: https://git.sr.ht/~tarsius/tray
 ;; Keywords: compile, convenience, lisp
 
-;; Package-Requires: ((emacs "27.1") (transient "0.3.0"))
+;; Package-Requires: ((emacs "27.1") (compat "28.1.1.0") (transient "0.3.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -35,6 +35,7 @@
 
 ;;; Code:
 
+(require 'compat)
 (require 'transient)
 
 (eval-when-compile

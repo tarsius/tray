@@ -5,7 +5,8 @@ PKG = tray
 ELS   = $(PKG).el
 ELCS  = $(ELS:.el=.elc)
 
-DEPS  = transient/lisp
+DEPS  = compat
+DEPS += transient/lisp
 
 EMACS      ?= emacs
 EMACS_ARGS ?=
