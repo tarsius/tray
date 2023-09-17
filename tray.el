@@ -53,10 +53,10 @@ you have to call the function by the same name instead.")
   "Add all suggested key bindings.
 If you would rather cherry-pick some bindings, then
 start by looking at the definition of this function."
-  (define-key global-map            (kbd "C-c C-e") #'tray-epa-dispatch)
-  (define-key epa-key-list-mode-map (kbd "C-c C-e") #'tray-epa-key-list-dispatch)
-  (define-key epa-mail-mode-map     (kbd "C-c C-e") #'tray-epa-mail-dispatch)
-  (define-key mml-mode-map          (kbd "C-c C-m") #'tray-mml)
+  (keymap-set global-map            "C-c C-e" #'tray-epa-dispatch)
+  (keymap-set epa-key-list-mode-map "C-c C-e" #'tray-epa-key-list-dispatch)
+  (keymap-set epa-mail-mode-map     "C-c C-e" #'tray-epa-mail-dispatch)
+  (keymap-set mml-mode-map          "C-c C-m" #'tray-mml)
   )
 
 (when tray-add-suggested-bindings
