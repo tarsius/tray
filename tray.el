@@ -3,7 +3,7 @@
 ;; Copyright (C) 2021-2024 Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <emacs.tray@jonas.bernoulli.dev>
-;; Homepage: https://git.sr.ht/~tarsius/tray
+;; Homepage: https://github.com/tarsius/tray
 ;; Keywords: convenience
 
 ;; Package-Version: 0.1.4
