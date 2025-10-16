@@ -39,11 +39,9 @@
 (require 'compat)
 (require 'transient)
 
-(eval-when-compile
-  (require 'epa)
-  (require 'epa-mail)
-  (require 'mml)
-  )
+(eval-when-compile (require 'epa))
+(eval-when-compile (require 'epa-mail))
+(eval-when-compile (require 'mml))
 
 (defvar tray-add-suggested-bindings nil
   "Whether to add all suggested key bindings.
