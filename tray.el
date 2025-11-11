@@ -8,7 +8,7 @@
 
 ;; Package-Version: 0.1.7
 ;; Package-Requires: (
-;;     (emacs    "27.1")
+;;     (emacs    "28.1")
 ;;     (compat   "30.1")
 ;;     (transient "0.10"))
 
