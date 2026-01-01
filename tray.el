@@ -145,4 +145,7 @@ start by looking at the definition of this function."
 
 ;;; _
 (provide 'tray)
+;; Local Variables:
+;; lisp-indent-local-overrides: ((cond . 0) (interactive . 0))
+;; End:
 ;;; tray.el ends here
