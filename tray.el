@@ -6,11 +6,11 @@
 ;; Homepage: https://github.com/tarsius/tray
 ;; Keywords: convenience
 
-;; Package-Version: 0.1.7
+;; Package-Version: 0.1.8
 ;; Package-Requires: (
 ;;     (emacs    "28.1")
 ;;     (compat   "30.1")
-;;     (transient "0.10"))
+;;     (transient "0.12"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
