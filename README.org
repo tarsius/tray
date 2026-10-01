@@ -4,3 +4,9 @@ Transient menus for a wide variety of things.  Actually this
 collection is still very sparse.
 
 For suggested key bindings see ~tray-add-suggested-bindings~.
+
+#+html: <br><br>
+#+html: <a href="https://github.com/tarsius/tray/actions/workflows/compile.yml"><img alt="Compile" src="https://github.com/tarsius/tray/actions/workflows/compile.yml/badge.svg"/></a>
+#+html: <a href="https://snapshots.melpa.org/#/tray"><img alt="MELPA Snapshots" src="https://snapshots.melpa.org/packages/tray-badge.svg"/></a>
+#+html: <a href="https://releases.melpa.org/#/tray"><img alt="MELPA Releases" src="https://releases.melpa.org/packages/tray-badge.svg"/></a>
+#+html: <a href="https://emacsair.me/human"><img alt="human made" src="https://emacsair.me/assets/badges/human.svg"/></a>
