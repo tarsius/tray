@@ -6,7 +6,7 @@
 ;; Homepage: https://github.com/tarsius/tray
 ;; Keywords: convenience
 
-;; Package-Version: 0.2.1
+;; Package-Version: 0.2.2
 ;; Package-Requires: (
 ;;     (emacs     "30.1")
 ;;     (compat    "31.1")
