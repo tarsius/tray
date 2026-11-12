@@ -8,7 +8,7 @@
 
 ;; Package-Version: 0.2.1
 ;; Package-Requires: (
-;;     (emacs     "28.1")
+;;     (emacs     "30.1")
 ;;     (compat    "31.1")
 ;;     (transient "0.13"))
 
@@ -63,14 +63,14 @@ start by looking at the definition of this function."
 
 ;;; epa, epa-mail
 
-;;;###autoload (autoload 'tray-epa-dispatch "tray" nil t)
+;;;###autoload
 (transient-define-prefix tray-epa-dispatch ()
   "Select and invoke an EasyPG command from a list of available commands."
   [[("l p" "list public keys"   epa-list-keys)
     ("l s" "list secret keys"   epa-list-secret-keys)
     ("i p" "insert public keys" epa-insert-keys)]])
 
-;;;###autoload (autoload 'tray-epa-mail-dispatch "tray" nil t)
+;;;###autoload
 (transient-define-prefix tray-epa-mail-dispatch ()
   "Select and invoke an EasyPG command from a list of available commands."
   [[("e"  "encrypt"     epa-mail-encrypt)
@@ -80,7 +80,7 @@ start by looking at the definition of this function."
    [("i"  "import keys" epa-mail-import-keys)
     ("o"  "insert keys" epa-insert-keys)]])
 
-;;;###autoload (autoload 'tray-epa-key-list-dispatch "tray" nil t)
+;;;###autoload
 (transient-define-prefix tray-epa-key-list-dispatch ()
   "Select and invoke an EasyPG command from a list of available commands."
   :transient-suffix     #'transient--do-call
@@ -103,7 +103,7 @@ start by looking at the definition of this function."
 
 ;;; mml
 
-;;;###autoload (autoload 'tray-mml "tray" nil t)
+;;;###autoload
 (transient-define-prefix tray-mml ()
   "Transient menu for MML documents."
   [["Attach"
